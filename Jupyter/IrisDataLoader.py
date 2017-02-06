@@ -50,13 +50,16 @@ class __IrisDataLoaderClass:
             
 
     def __init__(self):
-        __IrisDataLoaderClass.LoadRawData()
-        
+        self.LoadRawData()
 
     def DataWithBias(self, inBias):
-        tBias = np.full((len(__IrisDataLoaderClass.RawDataLabels), 1), inBias, float)
-        return np.column_stack((tBias, __IrisDataLoaderClass.RawData))
+        tBias = np.full((len(self.RawDataLabels), 1), inBias, float)
+        return np.column_stack((tBias, self.RawData))
     
 def DataWithBias_Labels(inBias):
-    ic = __IrisDataLoaderClass()
-    return ic.DataWithBias(inBias), __IrisDataLoaderClass.RawDataLabels
+    tLoader = __IrisDataLoaderClass()
+    return tLoader.DataWithBias(inBias), tLoader.RawDataLabels
+
+def Data_Labels():
+    tLoader = __IrisDataLoaderClass()
+    return tLoader.RawData, tLoader.RawDataLabels
