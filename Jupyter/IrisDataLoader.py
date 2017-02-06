@@ -47,19 +47,12 @@ class __IrisDataLoaderClass:
     
             # convert to float type
             cls.RawData = tRawData_2.astype(float)
-            
 
-    def __init__(self):
-        self.LoadRawData()
+__IrisDataLoaderClass.LoadRawData()
 
-    def DataWithBias(self, inBias):
-        tBias = np.full((len(self.RawDataLabels), 1), inBias, float)
-        return np.column_stack((tBias, self.RawData))
-    
 def DataWithBias_Labels(inBias):
-    tLoader = __IrisDataLoaderClass()
-    return tLoader.DataWithBias(inBias), tLoader.RawDataLabels
+    tBias = np.full((len(__IrisDataLoaderClass.RawDataLabels), 1), inBias, float)
+    return np.column_stack((tBias, __IrisDataLoaderClass.RawData)), __IrisDataLoaderClass.RawDataLabels
 
 def Data_Labels():
-    tLoader = __IrisDataLoaderClass()
-    return tLoader.RawData, tLoader.RawDataLabels
+    return __IrisDataLoaderClass.RawData, __IrisDataLoaderClass.RawDataLabels
